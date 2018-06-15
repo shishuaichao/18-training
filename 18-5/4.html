@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button>点击</button>
+    
+</body>
+<!-- <script src="https://cdn.bootcss.com/jquery/3.3.1/core.js"></script> -->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.slim.js"></script>
+<script>
+    $(function(){
+        let num = 0;
+        let timer;
+        $('button').on('click',function(){
+            // 点击进来首先判断条件符不符合（num==0就符合），符合就可以触发事件，不符合就退出
+            if(num==0){
+                alert('恭喜，恭喜');
+                num=5;
+                $('button').text(num)
+                num--;
+            }else{
+                return;
+            }
+            // 能走到这，肯定是符合条件了，设置一个定时器，每一秒替换button中的内容，达到提示的做用，
+            // 因为这个里面的内容第一次执行也要到1000ms之后，所以，我们在上面的判断符合条件后，执行了一次定时器中的内容，让button中的内容变化看起来不会有延迟
+            timer = setInterval(() => {
+                $('button').text(num)
+                num--;
+                if(num==0){
+                    clearInterval(timer);
+                    $('button').text('又可以点击了')
+                }
+            }, 1000);
+        })
+    })
+</script>
+</html>

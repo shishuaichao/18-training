@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test-div">
+        <ul>
+            <li><span>JavaScript</span></li>
+            <li><span>Python</span></li>
+            <li id="ss"><span>Swift</span></li>
+        </ul>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    'use strict'
+    var arr = ['Pascal','Lu','Ruby'];
+    arr.forEach(function(val,i){
+        var li = `<li><span>${val}</span></li>`
+        console.log(li)
+        $('#test-div ul').append(li)
+    })
+    // 移动
+    $('#test-div ul').append($('#ss'))
+    // 调位置
+    var arr1 = []
+    $('#test-div ul li').each((i,val)=>{
+        arr1.push(val.innerText)
+    })
+    arr1.sort((a,b)=>{
+        return a[0].charCodeAt() - b[0].charCodeAt() 
+    })
+    $('#test-div ul li').remove()
+    arr1.forEach((val,i)=>{
+        var li = `<li><span>${val}</span></li>`
+        console.log(li)
+        $('#test-div ul').append(li)
+    })
+</script>
+</html>

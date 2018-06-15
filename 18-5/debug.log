@@ -1,0 +1,3 @@
+[0520/165054.141:ERROR:persistent_memory_allocator.cc(809)] Corruption detected in shared-memory segment.
+[0528/003840.933:ERROR:persistent_memory_allocator.cc(809)] Corruption detected in shared-memory segment.
+[0611/074751.915:ERROR:persistent_memory_allocator.cc(809)] Corruption detected in shared-memory segment.

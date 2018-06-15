@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>jQuery特定插件</title>
+</head>
+<style>
+    .external::after{
+        content: '[外]'
+    }
+
+</style>
+<body>
+    <div id="div">
+        <p>这是一个超链接<a href="http://www.baidu.com" target="_blank">百度</a></p>
+        <p>
+            这不是一个指向外部的<a href="/res/api/xx.html" target="_blank">内部资源</a>
+            这是一个指向外部的<a href="https://developer.mozilla.org" target="_blank">Mozilla开发者平台</a>
+        </p>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+    $(function(){
+        $.fn.external = function(){
+            return this.filter('a').each(function(){
+                var a = $(this);
+                var url = a.attr('href')
+                console.log(url)
+                if(url && url.indexOf('http://')===0 || url.indexOf('https://')===0){
+                    a.attr('href','#0')
+                    .removeAttr('target')
+                    .addClass('external')
+                    .click(function(){
+                        if(confirm('你要跳转到外部链接'+url+'?')){
+                            window.open(url)
+                        }
+                    })
+                }
+            })
+        }
+        $('#div *').external()
+    })
+</script>
+</html>

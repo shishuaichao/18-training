@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>上传文件</title>
+</head>
+<body>
+    <form action="#" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="text" name="userName">
+        <input type="submit">
+    </form>
+    <button id="button">提交</button>
+</body>
+<script>
+    var input = document.querySelector('input')
+    input.addEventListener('change',function(e){
+        var file = input.files[0];
+        var reader = new FileReader();
+        reader.onload = function(e){
+            var data = e.target.result;
+            var div = document.createElement('div');
+            div.style.height = '400px';
+            div.style.backgroundImage = 'url('+data+')'
+            div.style.backgroundSize = 'auto 100%'
+            document.body.appendChild(div)
+        }
+        reader.readAsDataURL(file);
+
+    })
+
+    var btn = document.getElementById('button')
+    var form = document.querySelector('form')
+    btn.onclick = function(e){
+        form.submit()
+    }
+
+    form.onsubmit = function(e){
+        console.log(e.target)
+        return false
+        alert(12)
+        
+    }
+</script>
+</html>

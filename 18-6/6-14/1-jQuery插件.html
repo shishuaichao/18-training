@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>jQuery插件</title>
+</head>
+<body>
+    <div id="div">
+        <p>这是一个<span>标题</span></p>
+        <ul>
+            <li>这是内容<span>内容1</span></li>
+            <li>这是内容<span>内容2</span></li>
+            <li>这是内容<span>内容3</span></li>
+        </ul>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(function(){
+        $.fn.highlight = function(options){
+            
+            var opts = $.extend({},$.fn.highlight.default,options);
+            this.css(opts)
+            return this;
+        }
+        $.fn.highlight.default = {
+                backgroundColor:'#f0f',
+                color:'#fff'
+            }
+        $.fn.highlight.default.color = '#00f'
+        $('#div span').highlight({backgroundColor:'#0f0',color:'#f00'})
+    })
+</script>
+</html>

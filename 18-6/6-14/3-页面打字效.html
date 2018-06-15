@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>循环定时器01</title>
+    </head>
+    <body>
+        <div id="text"></div>
+        <script>
+            var Txt ="循环定时器，一个字一个字出现";
+            Tlen = Txt.length;
+            i=0;
+            var ev;
+            var tt =  document.getElementById("text");
+            var xx = setInterval(function(){
+                ev = setInterval(function(){
+                    i++;
+                    tt.innerHTML = Txt.substr(0,i);
+                    if(i==Tlen+1){
+                        clearInterval(ev);
+                        tt.innerHTML = '';
+                        i=0;
+                    }
+                },300);
+            },4800)
+        </script>
+    </body>
+</html>

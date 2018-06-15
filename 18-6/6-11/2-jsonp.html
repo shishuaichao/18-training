@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JSONP</title>
+</head>
+<body>
+    
+</body>
+<script>
+    
+</script>
+<!-- <script async src="http://api.money.126.net/data/feed/0000001,1399001?callback=refreshPrice"></script> -->
+<script>
+    function getPrice(){
+        var js = document.createElement('script')
+        js.src = 'http://api.money.126.net/data/feed/0000001,1399001?callback=refreshPrice'
+        // js.async = true;
+        document.body.appendChild(js)
+    }
+    
+    function refreshPrice(e){
+        console.log(e)
+    }
+    getPrice()
+    var xhr = new XMLHttpRequest()
+    xhr.onreadystatechange = function(e){
+        if(xhr.readyState === 4 && xhr.status === 200){
+            console.log(xhr.response)
+        }
+    }
+    xhr.open('GET','http://api.money.126.net/data/feed/0000001,1399001?callback=refreshPrice')
+    xhr.send()
+</script>
+</html>

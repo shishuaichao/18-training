@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn1">button1</button>
+    <button id="btn2">button2</button>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    var btn1 = $('#btn1');
+    var btn2 = $('#btn2');
+    function popupTestWindow(){
+        window.open('/')
+    }
+    btn1.click(function(){
+        popupTestWindow()
+    })
+    btn2.click(function(){
+        // setInterval(popupTestWindow,100)
+        for(let i=0;i<10;i++){
+            popupTestWindow()
+        }
+    })
+</script>
+</html>

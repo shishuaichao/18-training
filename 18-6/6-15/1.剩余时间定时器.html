@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>剩余时间</title>
+</head>
+<body>
+    
+</body>
+<script src="https://shishuaichao.github.io/base.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+
+    function toNum(day,hour,min,sec){
+        for(let i=0;i<4;i++){
+            if(!base.isNum(arguments[i])){
+                throw TypeError('必须传入四个整数参数')
+            }
+        }
+        var dayNum = day*24*60*60*1000;  // day*86400000
+        var hourNum = hour*60*60*1000;   // hour*3600000
+        var minNum = min*60*1000;        // min*60000
+        var secNum = sec*1000;           // sec*1000
+        return dayNum+hourNum+minNum+secNum
+    }
+    console.log(toNum(1,2,34,5))
+    // 计算给定数字对应的时长
+    function toStr(num){
+        let remind = num;  // 剩余
+        var day = Math.floor(remind/86400000);
+        remind = remind%86400000;
+        var hour = Math.floor(remind/3600000);
+        remind = remind%3600000;
+        var min = Math.floor(remind/60000);
+        remind = remind%60000;
+        var sec = Math.floor(remind/1000);
+        return day+'天'+hour+'小时'+min+'分钟'+sec+'秒'
+    }
+    // 倒计时
+    // 此处剩余时间由服务器返回的两个时间计算得出，一个是当前时间戳，一个是截止时间戳
+    // remindDate = 截止时间戳 - 当前时间戳
+    var remindDate = toNum(1,2,34,5);
+    var timer = setInterval(function(){
+        remindDate -= 1000;
+        console.log(toStr(remindDate))
+        if(remindDate == 0){
+            clearInterval(timer)
+        }
+    },1000)
+    clearInterval(timer)
+    
+</script>
+</html>
