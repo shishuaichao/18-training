@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>every</title>
+</head>
+<body>
+    
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(function(){
+        'use strict';
+        var obj = ['aSbc','dMf','sss','ssc'];
+        var r1 = obj.filter(function(value,i){
+            return isAllLowercase(value)
+        })
+        var r2 = obj.every(function(value,i){
+            return isAllLowercase(value)
+        })
+        var r3 = obj.some(function(value,i){
+            return isAllLowercase(value)
+        })
+        function isAllLowercase(val){
+            for(let i=0;i<val.length;i++){
+                if(val[i]<'a' || val[i]>'z'){
+                    return false
+                }
+            }
+            return true
+        }
+        console.log('全是小写的项：',r1)
+        console.log('全是小写吗？',r2)
+        console.log('含有全是小写的吗？',r3)
+    })
+</script>
+</html>
