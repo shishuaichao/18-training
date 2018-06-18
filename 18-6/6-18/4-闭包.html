@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>闭包</title>
+</head>
+<body>
+    
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    // var scope = "global scope"
+    // function checkscope(){
+    //     var scope = 'local scope'
+    //     function f(){return scope}
+    //     return f()
+    // }
+    // checkscope()  // local scope 
+
+
+    var scope = "global scope"
+    function checkscope(){
+        var scope = 'local scope'
+        function f(){return scope}
+        return f
+    }
+    checkscope()()   //  local scope
+    var s = checkscope()
+    s()   // local scope
+
+    // 词法作用域的规则： JavaScript函数的执行用到了作用域链，这个作用域链是函数定义的时候创建的。嵌套的函数f()定义在这个作用域链里，其中的变量scope一定是局部变量，不管在何时何地执行函数f(),这种绑定在执行f()时依然有效。
+
+    // 闭包这个特性强大到让人吃惊：它们可以捕捉到局部变量（和参数），并一直保存下来，看起来像这些变量绑定到了再其中定义它们的外部函数。
+
+
+    function counter(){
+        var num = 0;
+        return {
+            count:function(){return num++},
+            reset:function(){num = 0}
+        }
+    }
+
+    var a = counter(),b = counter()
+    a.count()
+    b.count()  // 互不干扰
+</script>
+</html>

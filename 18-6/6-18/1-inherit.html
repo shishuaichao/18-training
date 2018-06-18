@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>继承</title>
+</head>
+<body>
+    
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    function inherit(p){
+        function F(){}
+        F.prototype = p;
+        return new F()
+    }
+    var obj = {a:1,b:2};
+    var a1 = inherit(obj)
+    var b1 = inherit(obj)
+
+    // 修改a1内容，不影响b1和obj的内容，放置不经意修改原对象的值
+    a1.__proto__ === b1.__proto__  //  true
+    a1.a === b1.a // true
+    a1.a = 11111;
+    b1.a // 1
+    obj.a //1
+</script>
+</html>

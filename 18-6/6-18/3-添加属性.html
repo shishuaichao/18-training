@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>defineProperty</title>
+</head>
+<body>
+    
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    var o = {a:1,b:2}
+    Object.defineProperty(o,'c',{
+        value:3,
+        
+        enumerable:false,
+        configurable:false,
+        writalbe:true,
+    })
+    o.c = 23  // 失败
+    Object.getOwnPropertyDescriptor(o,'c') // 查看属性描述
+    o  // {a:1,b:2,c:3}
+
+    Object.freeze(o)
+    o.a = 123213  // 失败
+
+    var now = new Date()
+    now.valueOf()   // xxxxxxxxxxx123
+    Date.parse(now) // xxxxxxxxxxx000
+</script>
+</html>
