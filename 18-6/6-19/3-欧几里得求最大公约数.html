@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>公约数</title>
+</head>
+<body>
+    
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    function gcd(a,b){
+        var t;
+        if(a<b) t=b,b=a,a=t;
+        while(b != 0) t=b,b=a%b,a=t;
+        return a;
+    }
+</script>
+</html>
